@@ -8,8 +8,10 @@ const router = express.Router();
 // CUSTOM PACKAGES
 const rootDir = require('../utils/path');
 
+// LOCAL FILES
+const adminData = require('./admin');
+
 router.get('/', (req, res, next) => {
-  console.log('Home Page Middleware');
   res.sendFile(path.join(rootDir, 'views', 'shop.html'));
 });
 

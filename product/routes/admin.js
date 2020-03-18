@@ -8,15 +8,18 @@ const router = express.Router();
 // CUSTOM PACKAGES
 const rootDir = require('../utils/path');
 
+const products = [];
+
 router.get('/add-product', (req, res, next) => {
-  console.log('Add Product Path Middleware');
   res.sendFile(path.join(rootDir, 'views', 'add-product.html'));
 });
 
 router.post('/add-product', (req, res, next) => {
-  console.log('Product POST Middleware');
-  console.log('req.body: ', req.body);
+  products.push({
+    title: req.body.title
+  });
   res.redirect('/');
 });
 
-module.exports = router;
+exports.routes = router;
+exports.products = products;

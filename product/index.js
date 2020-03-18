@@ -13,8 +13,11 @@ const adminRoutes = require('./routes/admin');
 // STATIC STYLES
 app.use(express.static(path.join(__dirname, 'public')));
 
+// MIDDLEWARE
+app.use(bodyParser.urlencoded({ extended: false }));
+
 // ROUTES
-app.use('/admin', adminRoutes);
+app.use('/admin', adminRoutes.routes);
 // admin is a common starting segment and thus it does not need added to the routes located in the adminRoutes object imported
 app.use(shopRoutes);
 
