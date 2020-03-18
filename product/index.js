@@ -10,6 +10,9 @@ const bodyParser = require('body-parser');
 const shopRoutes = require('./routes/shop');
 const adminRoutes = require('./routes/admin');
 
+// STATIC STYLES
+app.use(express.static(path.join(__dirname, 'public')));
+
 // ROUTES
 app.use('/admin', adminRoutes);
 // admin is a common starting segment and thus it does not need added to the routes located in the adminRoutes object imported
