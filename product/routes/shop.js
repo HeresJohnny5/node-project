@@ -12,8 +12,8 @@ const rootDir = require('../utils/path');
 const adminData = require('./admin');
 
 router.get('/', (req, res, next) => {
-  console.log('products: ', adminData.products);
-  res.sendFile(path.join(rootDir, 'views', 'shop.html'));
+  res.render('shop');
+  // the render method will use the default templating engine setup in the index.js configuration setupand return that template
 });
 
 module.exports = router;

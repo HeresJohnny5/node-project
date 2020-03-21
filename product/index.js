@@ -16,6 +16,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // MIDDLEWARE
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// CONFIGURATION
+app.set('view engine', 'pug');
+// The pug template engine ships with built-in express support
+app.set('views', 'views');
+
 // ROUTES
 app.use('/admin', adminRoutes.routes);
 // admin is a common starting segment and thus it does not need added to the routes located in the adminRoutes object imported
