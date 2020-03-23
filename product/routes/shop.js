@@ -13,8 +13,6 @@ const adminData = require('./admin');
 
 router.get('/', (req, res, next) => {
   const products = adminData.products;
-
-  console.log('products: ', products);
   res.render('shop', { prods: products, docTitle: 'Shop' });
   // the render method will use the default templating engine setup in the index.js configuration setupand return that template
   // you can pass a second argument to the render method that allows you to pass in data that should be added into the view. You pass the data as a JavaScript object where you map it to a key name which can then be used in the template to refer to the data being passed
