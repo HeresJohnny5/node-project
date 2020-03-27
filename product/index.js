@@ -26,8 +26,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.engine(
   "handlebars",
   expressHbs({
-    defaultLayout: null,
-    extname: "handlebars"
+    defaultLayout: "main-layout",
+    extname: "handlebars",
+    layoutsDir: "views/layouts/"
   })
 );
 app.set("view engine", "handlebars");
