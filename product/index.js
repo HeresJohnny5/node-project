@@ -3,7 +3,7 @@ const path = require("path");
 
 // THIRD-PARTY PACKAGES
 const express = require("express");
-const expressHbs = require("express-handlebars");
+// const expressHbs = require("express-handlebars");
 const app = express();
 const bodyParser = require("body-parser");
 
@@ -23,15 +23,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // app.set("views", "views");
 
 // CONFIGURATION FOR EXPRESS-HANDLEBARS
-app.engine(
-  "handlebars",
-  expressHbs({
-    defaultLayout: "main-layout",
-    extname: "handlebars",
-    layoutsDir: "views/layouts/"
-  })
-);
-app.set("view engine", "handlebars");
+// app.engine(
+//   "handlebars",
+//   expressHbs({
+//     defaultLayout: "main-layout",
+//     extname: "handlebars",
+//     layoutsDir: "views/layouts/"
+//   })
+// );
+// app.set("view engine", "handlebars");
+// app.set("views", "views");
+
+// CONFIGURATION FOR EJS
+app.set("view engine", "ejs");
 app.set("views", "views");
 
 // ROUTES
