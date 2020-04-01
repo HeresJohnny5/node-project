@@ -6,7 +6,7 @@ const router = express.Router();
 
 // CUSTOM PACKAGES
 
-// LOCAL FILES
+// CONTROLLERS
 const productsController = require('../controllers/products');
 
 router.get("/", productsController.getProducts);

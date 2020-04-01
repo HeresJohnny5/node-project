@@ -10,6 +10,9 @@ const bodyParser = require("body-parser");
 const shopRoutes = require("./routes/shop");
 const adminRoutes = require("./routes/admin");
 
+// CONTROLLERS
+const errorController = require("./controllers/404");
+
 // STATIC STYLES
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -25,9 +28,6 @@ app.use("/admin", adminRoutes);
 // admin is a common starting segment and thus it does not need added to the routes located in the adminRoutes object imported
 app.use(shopRoutes);
 
-app.use((req, res, next) => {
-  res.status(404);
-  res.render("404", { docTitle: "404", path: "/admin/add-product" });
-});
+app.use(errorController.get404);
 
 app.listen(3000);
