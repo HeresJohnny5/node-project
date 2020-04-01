@@ -1,31 +1,16 @@
 // CORE PACKAGE
-const path = require("path");
 
 // THIRD-PARTY PACKAGES
 const express = require("express");
 const router = express.Router();
 
 // CUSTOM PACKAGES
-const rootDir = require("../utils/path");
 
-const products = [];
+// LOCAL FILES
+const productsController = require('../controllers/products');
 
-router.get("/add-product", (req, res, next) => {
-  res.render("add-product", {
-    docTitle: "Add Product",
-    path: "/admin/add-product",
-    activeAddProduct: true,
-    productCSS: true,
-    formsCSS: true
-  });
-});
+router.get("/add-product", productsController.getAddProduct);
 
-router.post("/add-product", (req, res, next) => {
-  products.push({
-    title: req.body.title
-  });
-  res.redirect("/");
-});
+router.post("/add-product", productsController.postAddProduct);
 
-exports.routes = router;
-exports.products = products;
+module.exports = router;

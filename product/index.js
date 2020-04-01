@@ -3,7 +3,6 @@ const path = require("path");
 
 // THIRD-PARTY PACKAGES
 const express = require("express");
-// const expressHbs = require("express-handlebars");
 const app = express();
 const bodyParser = require("body-parser");
 
@@ -17,29 +16,12 @@ app.use(express.static(path.join(__dirname, "public")));
 // MIDDLEWARE
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// CONFIGURATION FOR PUG
-// app.set("view engine", "pug");
-// The pug template engine ships with built-in express support
-// app.set("views", "views");
-
-// CONFIGURATION FOR EXPRESS-HANDLEBARS
-// app.engine(
-//   "handlebars",
-//   expressHbs({
-//     defaultLayout: "main-layout",
-//     extname: "handlebars",
-//     layoutsDir: "views/layouts/"
-//   })
-// );
-// app.set("view engine", "handlebars");
-// app.set("views", "views");
-
 // CONFIGURATION FOR EJS
 app.set("view engine", "ejs");
 app.set("views", "views");
 
 // ROUTES
-app.use("/admin", adminRoutes.routes);
+app.use("/admin", adminRoutes);
 // admin is a common starting segment and thus it does not need added to the routes located in the adminRoutes object imported
 app.use(shopRoutes);
 
