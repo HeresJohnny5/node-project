@@ -8,8 +8,8 @@ module.exports = class Product {
   }
 
   save() {
-    const p = path.dirname(
-      process.mainModule.filename, 
+    const p = path.join(
+      path.dirname(process.mainModule.filename), 
       'data', 
       'products.json'
     );
@@ -22,26 +22,30 @@ module.exports = class Product {
       }
 
       products.push(this);
-      
+
       fs.writeFile(p, JSON.stringify(products), (err) => {
         console.log(err);
       });
     });
   }
 
-  static fetchAll() {
-    const p = path.dirname(
-      process.mainModule.filename, 
+  static fetchAll(cb) {
+    const p = path.join(
+      path.dirname(process.mainModule.filename), 
       'data', 
       'products.json'
     );
 
-    fs.readFile(p, (err, filedContent) => {
+    fs.readFile(p, 'utf-8', (err, fileContent) => {
       if (err) {
-        return [];
+        cb([]);
+      } else {
+        if (fileContent === '') {
+          cb([]);
+        } else {
+          cb(JSON.parse(fileContent));
+        }
       }
-
-      return JSON.parse(filedContent);
     });
   }
   // The static keyword defines a static method for a class. Static methods aren't called on instances of the class. Instead, they're called on the class itself. These are often utility functions, such as functions to create or clone objects.
